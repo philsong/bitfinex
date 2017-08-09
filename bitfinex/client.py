@@ -83,7 +83,7 @@ class TradeClient:
 
         try:
             json_resp['order_id']
-        except:
+        except KeyError:
             return json_resp['message']
 
         return json_resp
@@ -106,7 +106,7 @@ class TradeClient:
 
         try:
             json_resp['avg_excution_price']
-        except:
+        except KeyError:
             return json_resp['message']
 
         return json_resp
@@ -145,7 +145,7 @@ class TradeClient:
 
         try:
             json_resp['avg_excution_price']
-        except:
+        except KeyError:
             return json_resp['message']
 
         return json_resp
@@ -322,7 +322,7 @@ class TradeClient:
         :param until: Optional. Return only the history before this timestamp.
         :param limit: Optional. Limit the number of entries to return. Default is 500.
         :param wallet: Optional. Return only entries that took place in this wallet. Accepted inputs are: "trading",
-        "exchange", "deposi".
+        "exchange", "deposit".
         """
         payload = {
             "request": "/v1/history",
