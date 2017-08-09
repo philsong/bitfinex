@@ -107,7 +107,7 @@ class TradeClient:
         json_resp = r.json()
 
         try:
-            json_resp['avg_excution_price']
+            json_resp['avg_execution_price']
         except KeyError:
             return json_resp['message']
 
@@ -146,7 +146,7 @@ class TradeClient:
         json_resp = r.json()
 
         try:
-            json_resp['avg_excution_price']
+            json_resp['avg_execution_price']
         except KeyError:
             return json_resp['message']
 
