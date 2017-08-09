@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from __future__ import absolute_import
 import requests
 import json
@@ -321,8 +323,7 @@ class TradeClient:
         :param since: Optional. Return only the history after this timestamp.
         :param until: Optional. Return only the history before this timestamp.
         :param limit: Optional. Limit the number of entries to return. Default is 500.
-        :param wallet: Optional. Return only entries that took place in this wallet. Accepted inputs are: "trading",
-        "exchange", "deposit".
+        :param wallet: Optional. Return only entries that took place in this wallet. Accepted inputs are: "trading", "exchange", "deposit".
         """
         payload = {
             "request": "/v1/history",
