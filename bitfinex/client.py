@@ -22,7 +22,8 @@ PATH_ORDERBOOK = "book/%s"
 # HTTP request timeout in seconds
 TIMEOUT = 5.0
 
-
+class ClientError(Exception):
+    pass
 
 class TradeClient:
     """
@@ -78,7 +79,6 @@ class TradeClient:
             "type": ord_type
 
         }
-
         signed_payload = self._sign_payload(payload)
         r = requests.post(self.URL + "/order/new", headers=signed_payload, verify=True)
         json_resp = r.json()
@@ -86,7 +86,7 @@ class TradeClient:
         try:
             json_resp['order_id']
         except KeyError:
-            return json_resp['message']
+            raise ClientError(json_resp['message'])
 
         return json_resp
 
@@ -109,7 +109,8 @@ class TradeClient:
         try:
             json_resp['avg_execution_price']
         except KeyError:
-            return json_resp['message']
+            #return json_resp['message']
+            raise ClientError(json_resp['message'])
 
         return json_resp
 
@@ -148,7 +149,8 @@ class TradeClient:
         try:
             json_resp['avg_execution_price']
         except KeyError:
-            return json_resp['message']
+            #return json_resp['message']
+            raise ClientError(json_resp['message'])
 
         return json_resp
 
@@ -312,6 +314,24 @@ class TradeClient:
 
         signed_payload = self._sign_payload(payload)
         r = requests.post(self.URL + "/balances", headers=signed_payload, verify=True)
+        json_resp = r.json()
+
+        return json_resp
+
+    def transfer(self, amount, currency, walletfrom, walletto):
+        '''
+        Transfer between 
+        '''
+        payload = {
+            'request': '/v1/transfer',
+            'nonce': self._nonce,
+            'amount': amount,
+            'currency': currency,
+            'walletfrom': walletfrom,
+            'walletto': walletto
+            }
+        signed_payload = self._sign_payload(payload)
+        r = requests.post(self.URL + "/transfer", headers=signed_payload, verify=True)
         json_resp = r.json()
 
         return json_resp
