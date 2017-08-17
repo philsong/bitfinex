@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.6'
+version = '0.3.0'
 
 # Runtime dependencies. See requirements.txt for development dependencies.
 dependencies = [
@@ -10,15 +10,15 @@ dependencies = [
 
 setup(name='bitfinex',
     version=version,
-    description='Python client for the Bitfinex API',
-    author='Scott Barr',
-    author_email='scottjbarr@gmail.com',
-    url='https://github.com/scottjbarr/bitfinex',
-    license='MIT',
+    description = 'Python client for the Bitfinex API',
+    author = 'Scott Barr',
+    author_email = 'songbohr@gmail.com',
+    url = 'https://github.com/philsong/bitfinex',
+    license = 'MIT',
     packages=['bitfinex'],
     scripts=['scripts/bitfinex-poll-orderbook'],
     install_requires=dependencies,
-    download_url='https://github.com/scottjbarr/bitfinex/tarball/%s' % version,
+    download_url='https://github.com/philsong/bitfinex/tarball/%s' % version,
     keywords=['bitcoin', 'btc'],
     classifiers=[],
     zip_safe=True)
