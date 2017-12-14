@@ -43,7 +43,6 @@ class TradeClient:
         Used in authentication
         """
         nonce = str(int(time.time() * 1000000))
-        print('nonce:', nonce)
         return nonce
 
     def _sign_payload(self, payload):
